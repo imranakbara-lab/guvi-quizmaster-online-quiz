@@ -1,0 +1,14 @@
+GUVI Final Project 2 - P2 Online Quiz Application (QuizMaster)
+
+GitHub repository : https://github.com/imranakbara-lab/guvi-quizmaster-online-quiz
+Frontend (Vercel) : https://guvi-quizmaster-online-quiz.vercel.app
+Backend (Render)  : https://quizmaster-api-es51.onrender.com
+Swagger UI        : https://quizmaster-api-es51.onrender.com/swagger-ui.html
+
+Demo logins
+  Admin       : admin@quizmaster.com       / Admin@123
+  Participant : participant@quizmaster.com / Participant@123
+
+Note: Backend is on Render free plan - first request may take ~50 seconds to wake up.
+Emails are logged (SMTP not configured). To send real emails set MAIL_ENABLED=true,
+MAIL_USERNAME and MAIL_PASSWORD (Gmail App Password) in Render.
