@@ -1,4 +1,5 @@
-# Render Blueprint: backend API + free PostgreSQL database
+# Render Blueprint: backend API. Uses the account's existing free PostgreSQL database
+# (Render allows one free database) with its own schema "quizmaster".
 services:
   - type: web
     name: quizmaster-api
@@ -10,8 +11,10 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: quizmaster-db
+          name: realnest-db
           property: connectionString
+      - key: DB_SCHEMA
+        value: quizmaster
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ORIGINS
@@ -25,7 +28,3 @@ services:
       - key: MAIL_PASSWORD
         sync: false
 
-databases:
-  - name: quizmaster-db
-    databaseName: quizmaster
-    plan: free
