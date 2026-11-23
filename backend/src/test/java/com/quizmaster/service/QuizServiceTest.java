@@ -81,19 +81,19 @@ class QuizServiceTest {
         assertThat(quiz.getQuestions()).hasSize(3);
         assertThat(res.position()).isEqualTo(3);
         assertThat(res.options()).extracting(OptionAdminView::correct).containsExactly(true, false);
-        verify(quizRepository).saveAndFlush(quiz);
+        verify(quizRepository).flush();
     }
 
     @Test
     void updateQuestion_replacesOptions() {
         Question q = TestData.quiz().getQuestions().get(1);
         when(questionRepository.findById(20L)).thenReturn(Optional.of(q));
-        when(questionRepository.saveAndFlush(q)).thenReturn(q);
 
         QuestionAdminView res = quizService.updateQuestion(20L, question(true));
 
         assertThat(res.text()).isEqualTo("2 + 2 = ?");
         assertThat(res.options()).hasSize(2);
+        verify(questionRepository).flush();
     }
 
     @Test

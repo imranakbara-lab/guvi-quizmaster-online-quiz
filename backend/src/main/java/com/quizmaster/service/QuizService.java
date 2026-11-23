@@ -84,7 +84,7 @@ public class QuizService {
         q.setPosition(quiz.getQuestions().size() + 1);
         applyQuestion(q, req);
         quiz.addQuestion(q);
-        quizRepository.saveAndFlush(quiz);
+        quizRepository.flush();          // cascades the new question + options so they get ids
         return QuestionAdminView.from(q);
     }
 
@@ -93,7 +93,8 @@ public class QuizService {
         validate(req);
         Question q = findQuestion(questionId);
         applyQuestion(q, req);
-        return QuestionAdminView.from(questionRepository.saveAndFlush(q));
+        questionRepository.flush();      // orphan options removed, new ones inserted
+        return QuestionAdminView.from(q);
     }
 
     @Transactional
