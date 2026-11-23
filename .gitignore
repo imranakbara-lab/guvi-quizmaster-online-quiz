@@ -1,0 +1,15 @@
+# Backend
+backend/target/
+*.class
+*.log
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+# IDE
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+*.iml
